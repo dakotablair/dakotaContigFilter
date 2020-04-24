@@ -16,26 +16,25 @@ class dakotaContigFilter:
     '''
     Module Name:
     dakotaContigFilter
-
     Module Description:
-    A KBase module: dakotaContigFilter
-This sample module contains one small method that filters contigs.
+    
     '''
-
-    ######## WARNING FOR GEVENT USERS ####### noqa
+    
+    ######## WARNING FOR GEVENT USERS #######
     # Since asynchronous IO can lead to methods - even the same method -
     # interrupting each other, you must be *very* careful when using global
     # state. A method could easily clobber the state set by another while
     # the latter method is running.
-    ######################################### noqa
+    #########################################
+
     VERSION = "0.0.1"
     GIT_URL = ""
-    GIT_COMMIT_HASH = "29ae8f780d97cd14fba0cfdefe8ed135cb15f58e"
-
+    GIT_COMMIT_HASH = ""
+    
     #BEGIN_CLASS_HEADER
     # Class variables and functions can be defined in this block
     #END_CLASS_HEADER
-
+    
     # config contains contents of config file in a hash or None if it couldn't
     # be found
     def __init__(self, config):
@@ -50,16 +49,9 @@ This sample module contains one small method that filters contigs.
         #END_CONSTRUCTOR
         pass
 
-
     def run_dakotaContigFilter(self, ctx, params):
-        """
-        This example function accepts any number of parameters and returns results in a KBaseReport
-        :param params: instance of mapping from String to unspecified object
-        :returns: instance of type "ReportResults" -> structure: parameter
-           "report_name" of String, parameter "report_ref" of String
-        """
         # ctx is the context object
-        # return variables are: output
+        # return variables are: returnVal
         #BEGIN run_dakotaContigFilter
 
         # Print statements to stdout/stderr are captured and available as the App log
@@ -141,6 +133,7 @@ This sample module contains one small method that filters contigs.
         logging.info('returning:' + pformat(output))
                 
         #END run_dakotaContigFilter
+        
 
         # At some point might do deeper type checking...
         if not isinstance(output, dict):
@@ -148,6 +141,7 @@ This sample module contains one small method that filters contigs.
                              'output is not type dict as required.')
         # return the results
         return [output]
+
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",
