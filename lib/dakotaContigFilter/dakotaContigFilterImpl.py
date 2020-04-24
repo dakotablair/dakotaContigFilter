@@ -40,7 +40,7 @@ This sample module contains one small method that filters contigs.
     # be found
     def __init__(self, config):
         #BEGIN_CONSTRUCTOR
-        
+
         # Any configuration parameters that are important should be parsed and
         # saved in the constructor.
         self.callback_url = os.environ['SDK_CALLBACK_URL']
@@ -139,7 +139,7 @@ This sample module contains one small method that filters contigs.
                   'n_contigs_remaining': n_remaining
                   }
         logging.info('returning:' + pformat(output))
-                
+
         #END run_dakotaContigFilter
 
         # At some point might do deeper type checking...
