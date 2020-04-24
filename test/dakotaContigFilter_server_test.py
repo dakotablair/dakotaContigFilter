@@ -51,12 +51,17 @@ class dakotaContigFilterTest(unittest.TestCase):
     @classmethod
     def prepareTestData(cls):
         """This function creates an assembly object for testing"""
-        fasta_content = '>seq1 something soemthing asdf\n' \
-                        'agcttttcat\n' \
-                        '>seq2\n' \
-                        'agctt\n' \
-                        '>seq3\n' \
-                        'agcttttcatgg'
+        fasta_content = (
+            '>seq1 something soemthing asdf\n'
+            'agcttttcat\n'
+            '>seq2\n'
+            'agctt\n'
+            '>seq3\n'
+            'agcttttcatgg\n'
+            '>seq4\n'
+            'acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgt'
+            'acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtac\n'
+        )
 
         filename = os.path.join(cls.scratch, 'test1.fasta')
         with open(filename, 'w') as f:
@@ -75,7 +80,6 @@ class dakotaContigFilterTest(unittest.TestCase):
             print('Test workspace was deleted')
 
     # NOTE: According to Python unittest naming rules test method names should start from 'test'. # noqa
-    # NOTE: According to Python unittest naming rules test method names should start from 'test'. # noqa
     def test_run_dakotaContigFilter_ok(self):
         # call your implementation
         ret = self.serviceImpl.run_dakotaContigFilter(self.ctx,
@@ -85,9 +89,9 @@ class dakotaContigFilterTest(unittest.TestCase):
                                                  })
 
         # Validate the returned data
-        self.assertEqual(ret[0]['n_initial_contigs'], 3)
+        self.assertEqual(ret[0]['n_initial_contigs'], 4)
         self.assertEqual(ret[0]['n_contigs_removed'], 1)
-        self.assertEqual(ret[0]['n_contigs_remaining'], 2)
+        self.assertEqual(ret[0]['n_contigs_remaining'], 3)
 
     def test_run_dakotaContigFilter_min_len_negative(self):
         with self.assertRaisesRegex(ValueError, 'min_length parameter cannot be negative'):
@@ -102,4 +106,34 @@ class dakotaContigFilterTest(unittest.TestCase):
                                               {'workspace_name': self.wsName,
                                                'assembly_input_ref': '1/fake/3',
                                                'min_length': 'ten'})
+
+    def test_run_dakotaContigFilter_max_ok(self):
+        # call your implementation
+        ret = self.serviceImpl.run_dakotaContigFilter_max(self.ctx,
+                                                {'workspace_name': self.wsName,
+                                                 'assembly_input_ref': self.assembly_ref,
+                                                 'min_length': 10,
+                                                 'max_length': 100,
+                                                 })
+
+        # Validate the returned data
+        self.assertEqual(ret[0]['n_initial_contigs'], 4)
+        self.assertEqual(ret[0]['n_contigs_removed'], 2)
+        self.assertEqual(ret[0]['n_contigs_remaining'], 2)
+
+    def test_run_dakotaContigFilter_max_len_negative(self):
+        with self.assertRaisesRegex(ValueError, 'max_length parameter cannot be negative'):
+            self.serviceImpl.run_dakotaContigFilter_max(self.ctx,
+                                              {'workspace_name': self.wsName,
+                                               'assembly_input_ref': self.assembly_ref,
+                                               'min_length': 10,
+                                               'max_length': '-10'})
+
+    def test_run_dakotaContigFilter_max_len_parse(self):
+        with self.assertRaisesRegex(ValueError, 'Cannot parse integer from max_length parameter'):
+            self.serviceImpl.run_dakotaContigFilter_max(self.ctx,
+                                              {'workspace_name': self.wsName,
+                                               'assembly_input_ref': self.assembly_ref,
+                                               'min_length': 10,
+                                               'max_length': 'ten'})
 
