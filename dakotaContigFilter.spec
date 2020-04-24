@@ -14,4 +14,9 @@ module dakotaContigFilter {
     */
     funcdef run_dakotaContigFilter(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
 
+    /*
+        New app which filters contigs in an assembly using both a minimum and a maximum contig length
+    */
+    funcdef run_dakotaContigFilter_max(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
+
 };

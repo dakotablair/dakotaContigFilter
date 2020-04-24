@@ -342,6 +342,10 @@ class Application(object):
                              name='dakotaContigFilter.run_dakotaContigFilter',
                              types=[dict])
         self.method_authentication['dakotaContigFilter.run_dakotaContigFilter'] = 'required'  # noqa
+        self.rpc_service.add(impl_dakotaContigFilter.run_dakotaContigFilter_max,
+                             name='dakotaContigFilter.run_dakotaContigFilter_max',
+                             types=[dict])
+        self.method_authentication['dakotaContigFilter.run_dakotaContigFilter_max'] = 'required'  # noqa
         self.rpc_service.add(impl_dakotaContigFilter.status,
                              name='dakotaContigFilter.status',
                              types=[dict])

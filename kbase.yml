@@ -2,7 +2,7 @@ module-name:
     dakotaContigFilter
 
 module-description:
-    A KBase module
+    A KBase sandbox module
 
 service-language:
     python

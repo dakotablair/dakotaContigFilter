@@ -30,7 +30,7 @@ This sample module contains one small method that filters contigs.
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = ""
-    GIT_COMMIT_HASH = "0aaac518614dd67efa4dbd0976c2ef9734ba988f"
+    GIT_COMMIT_HASH = "29ae8f780d97cd14fba0cfdefe8ed135cb15f58e"
 
     #BEGIN_CLASS_HEADER
     # Class variables and functions can be defined in this block
@@ -145,25 +145,6 @@ This sample module contains one small method that filters contigs.
         # At some point might do deeper type checking...
         if not isinstance(output, dict):
             raise ValueError('Method run_dakotaContigFilter return value ' +
-                             'output is not type dict as required.')
-        # return the results
-        return [output]
-
-    def run_dakotaContigFilter_max(self, ctx, params):
-        """
-        New app which filters contigs in an assembly using both a minimum and a maximum contig length
-        :param params: instance of mapping from String to unspecified object
-        :returns: instance of type "ReportResults" -> structure: parameter
-           "report_name" of String, parameter "report_ref" of String
-        """
-        # ctx is the context object
-        # return variables are: output
-        #BEGIN run_dakotaContigFilter_max
-        #END run_dakotaContigFilter_max
-
-        # At some point might do deeper type checking...
-        if not isinstance(output, dict):
-            raise ValueError('Method run_dakotaContigFilter_max return value ' +
                              'output is not type dict as required.')
         # return the results
         return [output]
