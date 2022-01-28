@@ -12,12 +12,12 @@ MAINTAINER KBase Developer
 # -----------------------------------------
 
 RUN echo 0
-ARG KB_AUTH_TOKEN
 RUN apt-get update
 RUN apt-get install locate
 RUN updatedb
-RUN locate kb-sdk
-RUN ls -halF /root/src/
+RUN locate env
+RUN ls -halF /root/src/kb-sdk
+RUN /usr/local/bin/kb-sdk test
 RUN env
 RUN exit 1
 COPY ./ /kb/module
