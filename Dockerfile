@@ -12,6 +12,7 @@ MAINTAINER KBase Developer
 # -----------------------------------------
 
 RUN echo 0
+RUN hostname
 RUN env
 RUN exit 1
 COPY ./ /kb/module
