@@ -13,11 +13,11 @@ MAINTAINER KBase Developer
 
 RUN echo 0
 RUN apt-get update
-RUN apt-get install less locate
+RUN apt-get install -y locate
 RUN updatedb
 RUN locate KB
 RUN ls -halF /mnt
-RUN cat /.dockerenv /etc/environment /root/.conda/environments.txt /kb/deployment/user-env.sh | less
+RUN cat /.dockerenv /etc/environment /root/.conda/environments.txt /kb/deployment/user-env.sh | less -X
 RUN source /kb/deployment/user-env.sh
 RUN env
 RUN exit 1
