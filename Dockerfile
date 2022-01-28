@@ -15,8 +15,8 @@ RUN echo 0
 RUN apt-get update
 RUN apt-get install locate
 RUN updatedb
-RUN locate ecre
-RUN ls -halF /root/src/kb-sdk
+RUN locate KB
+RUN ls -halF /
 RUN cat /.dockerenv
 RUN cat /etc/environment
 RUN cat /root/.conda/environments.txt
