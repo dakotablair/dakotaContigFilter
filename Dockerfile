@@ -12,7 +12,7 @@ MAINTAINER KBase Developer
 # -----------------------------------------
 
 RUN echo 0
-RUN echo $(whoami)
+RUN ls -halF /root
 RUN env
 RUN exit 1
 COPY ./ /kb/module
