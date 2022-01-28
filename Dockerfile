@@ -15,9 +15,13 @@ RUN echo 0
 RUN apt-get update
 RUN apt-get install locate
 RUN updatedb
-RUN locate env
+RUN locate ecre
 RUN ls -halF /root/src/kb-sdk
-RUN /usr/local/bin/kb-sdk test
+RUN cat /.dockerenv
+RUN cat /etc/environment
+RUN cat /root/.conda/environments.txt
+RUN cat /kb/deployment/user-env.sh
+RUN bash /kb/deployment/user-env.sh
 RUN env
 RUN exit 1
 COPY ./ /kb/module
