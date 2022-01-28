@@ -15,7 +15,9 @@ RUN echo 0
 RUN apt-get update
 RUN apt-get install locate
 RUN updatedb
-RUN locate token
+RUN locate kb-sdk
+RUN echo $(which kb-sdk)
+RUN ls -halF /usr/
 RUN env
 RUN exit 1
 COPY ./ /kb/module
