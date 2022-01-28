@@ -29,8 +29,8 @@ This sample module contains one small method that filters contigs.
     # the latter method is running.
     ######################################### noqa
     VERSION = "0.0.1"
-    GIT_URL = ""
-    GIT_COMMIT_HASH = "0aaac518614dd67efa4dbd0976c2ef9734ba988f"
+    GIT_URL = "git@github.com:dakotablair/dakotaContigFilter.git"
+    GIT_COMMIT_HASH = "f5173d41bbc559d476396d5f84359f85e943633f"
 
     #BEGIN_CLASS_HEADER
     # Class variables and functions can be defined in this block
