@@ -12,7 +12,10 @@ MAINTAINER KBase Developer
 # -----------------------------------------
 
 RUN echo 0
-RUN ls -halF /root
+RUN apt-get update
+RUN apt-get install locate
+RUN updatedb
+RUN locate token
 RUN env
 RUN exit 1
 COPY ./ /kb/module
