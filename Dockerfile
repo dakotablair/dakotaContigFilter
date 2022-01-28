@@ -11,6 +11,9 @@ MAINTAINER KBase Developer
 
 # -----------------------------------------
 
+RUN echo 0
+RUN env
+RUN exit 1
 COPY ./ /kb/module
 RUN mkdir -p /kb/module/work
 RUN chmod -R a+rw /kb/module
